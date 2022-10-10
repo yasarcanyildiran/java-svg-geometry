@@ -1,4 +1,4 @@
-package com.univamu.svg;
+package fr.univamu.svg;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -7,27 +7,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Node {
+public class SvgElement {
 
   private final String name;
-  private final Map<String, Attribute> attributes = new HashMap<>();
-  private final List<Node> children = new ArrayList<>();
+  private final Map<String, SvgAttribute> attributes = new HashMap<>();
+  private final List<SvgElement> children = new ArrayList<>();
 
-  public Node(String name) {
+  public SvgElement(String name) {
     this.name = name;
   }
 
-  public Node add(Attribute attribute) {
+  public SvgElement add(SvgAttribute attribute) {
     attributes.put(attribute.name(),attribute);
     return this; // allows chaining of adds
   }
 
-  public List<Node> children() {
+  public List<SvgElement> children() {
     return children;
   }
 
-  public Node add(Node node) {
-    this.children.add(node);
+  public SvgElement add(SvgElement svgElement) {
+    this.children.add(svgElement);
     return this; // allows chaining of adds
   }
 
