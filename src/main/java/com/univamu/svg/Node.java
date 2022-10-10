@@ -1,14 +1,11 @@
 package com.univamu.svg;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.univamu.svg.Attribute.tag;
 
 public class Node {
 
@@ -34,6 +31,12 @@ public class Node {
     return this; // allows chaining of adds
   }
 
+  public void toFile(String filepath) throws FileNotFoundException {
+    try (PrintStream out = new PrintStream(filepath)) {
+      out.println(this);
+    }
+  }
+
   public String toString() {
     StringBuilder builder = new StringBuilder();
     this.appendTo(builder,0);
@@ -55,9 +58,5 @@ public class Node {
   }
 
 
-  public void toFile(String filepath) throws FileNotFoundException {
-    try (PrintStream out = new PrintStream(new File(filepath))) {
-      out.println(this);
-    }
-  }
+
 }
