@@ -1,6 +1,9 @@
 package fr.univamu;
 
+import fr.univamu.geo.Disc;
 import fr.univamu.geo.Shape;
+import fr.univamu.geo.Star;
+import fr.univamu.geo.Vector2D;
 import fr.univamu.svg.SvgElement;
 
 import java.io.FileNotFoundException;
@@ -26,6 +29,6 @@ public class App {
   }
 
   public static void main(String[] args) throws FileNotFoundException {
-    // write(new Circle(1),"out/circle.svg");
+     write(new Star(7,3),"out/star.svg");
   }
 }
