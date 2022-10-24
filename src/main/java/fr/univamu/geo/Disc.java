@@ -13,4 +13,5 @@ public record Disc(double radius, Vector2D center) implements Shape {
         .add(tag("cx", center.x()))
         .add(tag("cy", center.y()));
   }
+
 }
