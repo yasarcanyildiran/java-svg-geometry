@@ -1,6 +1,6 @@
 package fr.univamu;
 
-import fr.univamu.geo.Shape;
+import fr.univamu.geometry.Shape;
 import fr.univamu.svg.SvgElement;
 
 import java.io.FileNotFoundException;
@@ -18,9 +18,9 @@ public class App {
 
   public static void write(Shape shape, String filepath) throws FileNotFoundException {
     makeSvg(shape)
-//        .add(tag("stroke","black"))
-//        .add(tag("stroke-width",0.03))
-//        .add(tag("fill","lightgray"))
+        .add(tag("stroke","black"))
+        .add(tag("stroke-width",0.03))
+        .add(tag("fill","lightgray"))
         .toFile(filepath);
 
   }

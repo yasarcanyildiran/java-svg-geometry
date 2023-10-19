@@ -5,10 +5,10 @@ plugins {
 
 
 application {
-    mainClass = 'fr.univamu.App'
+    mainClass.set('fr.univamu.App')
 }
 
-group 'org.example'
+group 'fr.univamu'
 version '1.0-SNAPSHOT'
 
 repositories {
