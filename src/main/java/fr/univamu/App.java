@@ -16,16 +16,10 @@ public class App {
         .add(shape.toSvg());
   }
 
-  public static void write(Shape shape, String filepath) throws FileNotFoundException {
-    makeSvg(shape)
-        .add(tag("stroke","black"))
-        .add(tag("stroke-width",0.03))
-        .add(tag("fill","lightgray"))
-        .toFile(filepath);
 
-  }
 
   public static void main(String[] args) throws FileNotFoundException {
-    // write(new Circle(1),"out/circle.svg");
+    // Remplacer new Circle(1) par une expression de Shape de votre choix :
+    // App.makeSvg(new Circle(1)).toFile("out/circle.svg");
   }
 }
