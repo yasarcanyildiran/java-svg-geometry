@@ -4,7 +4,7 @@ import fr.univamu.svg.SvgElement;
 
 import java.util.List;
 
-public sealed interface Shape permits Circle, Polygon, Transformed {
+public sealed interface Shape permits Circle, Polygon, Group, Transformed {
 
   SvgElement toSvg();
 

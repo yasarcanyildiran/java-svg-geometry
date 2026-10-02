@@ -56,4 +56,17 @@ class ShapeTest {
         .rotate(90, new Vector2D(1, 0)).toSvg().toString();
     assertThat(svg).contains("transform=\"rotate(90.0,1.0,0.0)\"");
   }
+
+  @Test
+  void testGroup() {
+    String svg = Group.of(new Circle(1), new Circle(2)).toSvg().toString();
+    assertThat(svg).startsWith("<g>").contains("r=\"1.0\"", "r=\"2.0\"").contains("</g>");
+  }
+
+  @Test
+  void testTransformedGroup() {
+    String svg = Group.of(new Circle(1), Polygon.of(new Vector2D(0, 0), new Vector2D(1, 0), new Vector2D(0, 1)))
+        .translate(new Vector2D(2, 0)).toSvg().toString();
+    assertThat(svg).startsWith("<g transform=\"translate(2.0,0.0)\">");
+  }
 }
