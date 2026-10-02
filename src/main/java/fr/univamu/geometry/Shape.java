@@ -2,6 +2,7 @@ package fr.univamu.geometry;
 
 import fr.univamu.svg.SvgElement;
 
-public interface Shape {
+public sealed interface Shape permits Circle, Polygon {
+
   SvgElement toSvg();
 }
