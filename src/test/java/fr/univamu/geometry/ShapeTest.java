@@ -69,4 +69,17 @@ class ShapeTest {
         .translate(new Vector2D(2, 0)).toSvg().toString();
     assertThat(svg).startsWith("<g transform=\"translate(2.0,0.0)\">");
   }
+
+  @Test
+  void testStyle() {
+    String svg = new Circle(1).fill("red").stroke("black", 0.1).toSvg().toString();
+    assertThat(svg).contains("fill=\"red\"", "stroke=\"black\"", "stroke-width=\"0.1\"");
+  }
+
+  @Test
+  void testStyleThenTransformKeepsBoth() {
+    String svg = new Circle(1).fill("red").translate(Vector2D.UNIT_X).rotate(90).toSvg().toString();
+    assertThat(svg).contains("fill=\"red\"")
+        .contains("transform=\"rotate(90.0,0.0,0.0) translate(1.0,0.0)\"");
+  }
 }

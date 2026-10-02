@@ -4,7 +4,7 @@ import fr.univamu.svg.SvgElement;
 
 import java.util.List;
 
-public sealed interface Shape permits Circle, Polygon, Group, Transformed {
+public sealed interface Shape permits Circle, Polygon, Group, Transformed, Styled {
 
   SvgElement toSvg();
 
@@ -32,5 +32,23 @@ public sealed interface Shape permits Circle, Polygon, Group, Transformed {
 
   default Shape scale(double factor) {
     return scale(factor, factor);
+  }
+
+  // ---- Tâche 5 : style ----
+
+  default Shape withStyle(String attribute, String value) {
+    return Styled.of(this, attribute, value);
+  }
+
+  default Shape fill(String color) {
+    return withStyle("fill", color);
+  }
+
+  default Shape stroke(String color, double width) {
+    return withStyle("stroke", color).withStyle("stroke-width", String.valueOf(width));
+  }
+
+  default Shape opacity(double opacity) {
+    return withStyle("opacity", String.valueOf(opacity));
   }
 }
