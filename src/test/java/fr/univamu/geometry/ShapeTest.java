@@ -36,4 +36,24 @@ class ShapeTest {
   void testStarHasRightNumberOfVertices() {
     assertThat(new Star(Vector2D.ZERO, 1, 5, 2).vertices()).hasSize(5);
   }
+
+  @Test
+  void testSingleTransformation() {
+    String svg = new Circle(1).translate(new Vector2D(-3, 2)).toSvg().toString();
+    assertThat(svg).contains("transform=\"translate(-3.0,2.0)\"");
+  }
+
+  @Test
+  void testCompositionOfTransformations() {
+    // translate puis scale  ->  en SVG : "scale(...) translate(...)"
+    String svg = new Circle(1).translate(new Vector2D(1, 2)).scale(2).toSvg().toString();
+    assertThat(svg).contains("transform=\"scale(2.0,2.0) translate(1.0,2.0)\"");
+  }
+
+  @Test
+  void testRotationAroundCenter() {
+    String svg = Polygon.of(new Vector2D(0, 0), new Vector2D(2, 2), new Vector2D(2, -2))
+        .rotate(90, new Vector2D(1, 0)).toSvg().toString();
+    assertThat(svg).contains("transform=\"rotate(90.0,1.0,0.0)\"");
+  }
 }
